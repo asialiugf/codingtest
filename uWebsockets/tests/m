@@ -1,0 +1,10 @@
+#g++ -std=c++11 -O3 -I ../src -fPIC -o main main.cpp  -L/home/riddle/uws -luWS -lssl -lz -lpthread
+g++ -std=c++11 -O3 -I ../src -fPIC -o server server.cpp -L/home/riddle/uws -luWS -lssl -lz -lpthread
+g++ -std=c++11 -O3 -I ../src -fPIC -o client client.cpp -L/home/riddle/uws -luWS -lssl -lz -lpthread
+#g++ -std=c++11 -O3 -I ../src -fPIC -o client1 client1.cpp -luWS -lssl -lz -lpthread
+#g++ -std=c++11 -O3 -I ../src -fPIC -o ping ping.cpp -luWS -lssl -lz -lpthread
+#g++ -std=c++11 -O3 -I ../src -fPIC -o disconn disconn.cpp -luWS -lssl -lz -lpthread
+#g++ -std=c++11 -O3 -I ../src -fPIC -o performance performance.cpp -L/home/riddle/uws -luWS -lssl -lz -lpthread
+g++ -std=c++11 -O3 -I ../src -fPIC -o fork fork.cpp -L/home/riddle/uws -luWS -lssl -lz -lpthread
+#g++ -std=c++11 -O3 -I ../src -fPIC -o route route.cpp -L/home/riddle/uws -luWS -lssl -lz -lpthread
+#g++ -std=c++11 -O3 -I ../src -fPIC -o transfer transfer.cpp -L/home/riddle/uws -luWS -lssl -lz -lpthread
