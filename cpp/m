@@ -1,0 +1,1 @@
+g++ -std=c++11 -O3  -fPIC -o t1 t1.cpp
