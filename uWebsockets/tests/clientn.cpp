@@ -1,5 +1,6 @@
 #include <uWS/uWS.h>
 #include <unistd.h>
+#include <iostream>
 
 #pragma comment(lib, "uWS.lib")
 
@@ -10,10 +11,10 @@ int main()
     // 客户端连上后发送hello
     h.onConnection([](uWS::WebSocket<uWS::CLIENT> *ws, uWS::HttpRequest req) {
         while(1) {
-            ws->send("--client1111--");
+            ws->send("--clientnnnn--");
             //sleep(1);
             usleep(1000000);
- 			break;
+            break;
         }
 
     });
@@ -30,6 +31,7 @@ int main()
         //ws->close();
     });
 
+
     // 服务端接收到包后原封不动返回
     /*
     h.onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
@@ -44,6 +46,17 @@ int main()
     /*
     h.listen(3000);
     */
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");
     h.connect("ws://localhost:3000");
 
     h.run();

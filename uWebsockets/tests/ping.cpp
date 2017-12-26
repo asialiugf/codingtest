@@ -6,7 +6,7 @@ int main()
 
     int pongs = 0, pings = 0;
 
-    h.onPing([&pings](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length) {
+    h.onPing([&pings](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length) {
         std::cout << "PING" << std::endl;
         pings++;
     });
@@ -16,20 +16,21 @@ int main()
         ws->send(message, length, opCode);
     });
 
-    h.onPong([&pings, &pongs, &h](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length) {
+    h.onPong([&pings, &pongs, &h](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length) {
         std::cout << "PONG" << std::endl;
         pongs++;
 
-        if(pongs == 3) {
+        if(pongs == 1000) {
             if(pings != pongs) {
                 std::cout << "FAILURE: mismatching ping/pongs" << std::endl;
                 exit(-1);
             }
-            h.getDefaultGroup<uWS::SERVER>().close();
+            h.getDefaultGroup<uWS::CLIENT>().close();
         }
     });
 
-    h.getDefaultGroup<uWS::SERVER>().startAutoPing(1000);
+    h.getDefaultGroup<uWS::CLIENT>().startAutoPing(1000);
+    //h.getDefaultGroup<uWS::CLIENT>().startAutoPing(1000);
     h.listen(3000);
     h.connect("ws://localhost:3000", nullptr);
     h.run();

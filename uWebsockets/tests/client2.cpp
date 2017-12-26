@@ -10,7 +10,7 @@ int main()
     // 客户端连上后发送hello
     h.onConnection([](uWS::WebSocket<uWS::CLIENT> *ws, uWS::HttpRequest req) {
         while(1) {
-            ws->send("--client1111--");
+            ws->send("--client2222--");
             //sleep(1);
             usleep(1000000);
  			break;
