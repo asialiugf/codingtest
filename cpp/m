@@ -1,1 +1,8 @@
-g++ -std=c++11 -O3  -fPIC -o t1 t1.cpp
+#g++ -std=c++11 -O3  -fPIC -o t1 t1.cpp
+#g++ -std=c++11 -O3  -fPIC -o mutex1 mutex1.cpp -lpthread
+#g++ -std=c++11 -O3  -fPIC -o mutex2 mutex2.cpp -lpthread
+#g++ -std=c++11 -O2  -fPIC -o title title.cpp
+#g++ -std=c++11 -O2  -fPIC -o T Title.cpp
+#g++ -std=c++11 -O3  -fPIC -o str1 str1.cpp
+g++ -std=c++11 -O3  -fPIC -o t  time.c
+#g++ -std=c++11 -O3  -fPIC -o tt  tt.cpp

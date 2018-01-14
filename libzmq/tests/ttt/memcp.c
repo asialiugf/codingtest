@@ -3,11 +3,17 @@
 #include <unistd.h>
 #include <assert.h>
 #include <string.h>
+#include <sys/time.h>
 #include <zmq.h>
 
 
 int main()
 {
+
+    struct  timeval start;
+    struct  timeval end1;
+    unsigned  long diff;
+
     printf("Hello world!\n");
 
     void* context = zmq_ctx_new();///创建一个新的环境
@@ -19,9 +25,10 @@ int main()
     void* publisher = zmq_socket(context, ZMQ_PUB);/// 创建一个发布者
     assert(publisher != NULL);
 
-    //ret = zmq_bind(publisher, "tcp://192.168.1.5:8888");/// 绑定该发布到TCP通信
+    //ret = zmq_bind(publisher, "tcp://127.0.0.1:8888");/// 绑定该发布到TCP通信
     ret = zmq_bind(publisher, "inproc://test_get_peer_state");/// 绑定该发布到TCP通信
     assert(ret == 0);
+
 
 
 
@@ -45,20 +52,36 @@ int main()
 
 
     while(1) {
+
+        sleep(1);
+
+        gettimeofday(&start,NULL);
         ret = zmq_send(publisher, "Hi,I'm server", 16, 0);/// 发送消息
         //assert(ret == 7);
-        printf("%d\n", ret);
-        sleep(1);
+        //printf("%d\n", ret);
+
         ret = zmq_recv(subscriber, buf, 16, ZMQ_DONTWAIT);/// 接收消息，非堵塞式
-		assert(ret == -1);
-        printf("%d\n", ret);
+
+        gettimeofday(&end1,NULL);
+        diff = 1000000 * (end1.tv_sec-start.tv_sec)+ end1.tv_usec-start.tv_usec;
+        printf("thedifference is %ld\n",diff);
+
+        //ret = zmq_recv(subscriber, buf, 16, 0);/// 接收消息，非堵塞式
         if(ret != -1) { /// 打印消息
             buf[ret] = '\0';
             printf("%s\n", buf);
         }
+
+        char buff[4096] ;
+        char msgg[4096] ;
+        memset(msgg,'a',1024);
+        gettimeofday(&start,NULL);
+        for(int i=0; i<10000; i++) {
+			memcpy(buff,msgg,4096);
+        }
+        gettimeofday(&end1,NULL);
+        diff = 1000000 * (end1.tv_sec-start.tv_sec)+ end1.tv_usec-start.tv_usec;
+        printf("memset time is %ld\n",diff);
     }
-
-    printf("1\n");
-
     return 0;
 }

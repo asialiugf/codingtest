@@ -1,3 +1,5 @@
 #cc pub.cpp -I /usr/include/zmq -lzmq -o pub1.x
 #cc sub.cpp -I /usr/include/zmq -lzmq -o sub1.x
 cc pubsub.c -I /usr/include/zmq -lzmq -o ps.x
+g++ memcp.c -I /usr/include/zmq -O2 -lzmq -o mem.x
+#g++ mtserver.c -I /usr/include/zmq -O2 -lzmq -o mtserver.x
