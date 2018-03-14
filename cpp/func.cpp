@@ -15,9 +15,9 @@ auto mod = [](int i, int j)
 };
 // 函数对象类
 struct divide {
-  int operator()(int denominator, int divisor)
+  int operator()(int a, int b)
   {
-    return denominator / divisor;
+    return a / b;
   }
 };
 
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     {
       '*', [](int i, int j)
       {
-        return i - j;
+        return i * j;
       }
     },
     { '/', divide() },
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
   cout << binops['+'](10, 5) << endl;
   cout << binops['-'](10, 5) << endl;
   cout << binops['*'](10, 5) << endl;
-  cout << binops['/'](10, 5) << endl;
-  cout << binops['%'](10, 5) << endl;
+  cout << binops['/'](10, 3) << endl;
+  cout << binops['%'](8, 9) << endl;
   return 0;
 }
