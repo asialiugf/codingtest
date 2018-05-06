@@ -137,8 +137,10 @@ public:
   {
     mm = k*k ;
     //Connect(pC, ValueChanged, this, &X::Xupdate);
-    Connect(pC, MI[1], this, &X::Xupdate);
-    Connect(pC, MI[9], this, &X::Xupdate);
+    //Connect(pC, MI[1], this, &X::Xupdate);  // Connect是define，所以 MI可以直接用。
+    pC->MI[1].Bind(this, &X::Xupdate);
+    pC->MI[9].Bind(this, &X::Xupdate);
+    //Connect(pC, MI[9], this, &X::Xupdate);
   }
   //void Xupdate(int x)
   void Xupdate(std::string kk)
