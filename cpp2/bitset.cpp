@@ -31,8 +31,8 @@ int main()
 //----------------
   double df1 = -639.6;
   double df2 = -790.2;
-  double dz1 = 14.0625;
-  double dz2 = 790.2;
+  double dz1 = 14.06251;
+  double dz2 = 5;
 
   //std::bitset<64> bit_df1 = std::bitset<64>(df1);
   std::bitset<64> bit_df1 = std::bitset<64>(*(int64_t *)&df1);
@@ -96,6 +96,9 @@ int main()
   std::cout << "dz1:"<< std::bitset<64>(*(int64_t *)&dz1) << std::endl;
   std::cout << "df2:"<< std::bitset<64>(*(int64_t *)&df2) << std::endl;
   std::cout << "dz2:"<< std::bitset<64>(*(int64_t *)&dz2) << std::endl;
+  data = std::bitset<64>(*(unsigned long*)&dz2);
+  int64_t dt1 = data.to_ullong();
+  cout << dt1 << endl;
 
   std::cout << "lf1:"<< std::bitset<64>(lf1) << std::endl;
   std::cout << "uif:"<< std::bitset<64>(*(int64_t *)&uif) << std::endl;
@@ -135,4 +138,10 @@ int main()
   //std::cout << "ll2:"<< std::bitset<64>(ll2) << std::endl;
   //std::cout << "llx:"<< std::bitset<64>(llx) << std::endl;
 
+  double ex = 0.999;
+  cout << endl;
+  int ex2 = ex * 1000 ;
+  int ex1 = static_cast<int>(ex);
+  cout << "ex1:"<<  ex1 << endl;
+  cout << "ex2:"<<  ex2 << endl;
 }
